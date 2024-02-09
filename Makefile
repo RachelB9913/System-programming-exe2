@@ -42,10 +42,10 @@ FLAGS = -Wall -g
 all: my_graph my_Knapsack libmy_knapsack.so libmy_mat.so
 
 my_graph: $(OBJECTS_MAIN) libmy_mat.so 
-	$(CC) $(FLAGS) -o my_graph $(OBJECTS_MAIN) -L. -lmy_mat
+	$(CC) $(FLAGS) -o my_graph $(OBJECTS_MAIN) -L. -libmy_mat
 
 my_Knapsack: $(OBJECTS_Knapsack) libmy_knapsack.so 
-	$(CC) $(FLAGS) -o my_Knapsack $(OBJECTS_Knapsack) -L. -lmy_knapsack
+	$(CC) $(FLAGS) -o my_Knapsack $(OBJECTS_Knapsack) -L. -libmy_knapsack
 
 libmy_mat.so: $(OBJECTS_MAT)
 	$(CC) -shared -o libmy_mat.so $(OBJECTS_MAT)

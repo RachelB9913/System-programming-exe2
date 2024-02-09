@@ -10,15 +10,8 @@ void getMatrix(int mat[][SIZE]){
         for(j=0;j<SIZE;j++){
             scanf("%d" , &value); 
             mat[i][j] = value;
-            
         }
     }
-    // for(i=0;i<SIZE;i++){
-    //     for(j=0;j<SIZE;j++){
-    //         printf(" %d",mat[i][j] ); //debug
-    //     }
-    //     printf("\nnew line");
-    // }
 }
 
 //finds the vertex with minimum weight value, from the set of vertices not yet visited in in shortest path.
@@ -60,7 +53,6 @@ int shortestPath(int i, int j, int mat[][SIZE], int beenThere[SIZE]){
     }
     return dist[j];
 }
-
 
 int isTherePath(int i, int j, int mat[][SIZE], int beenThere[SIZE]){
     int dist = shortestPath(i,j,mat, beenThere);
