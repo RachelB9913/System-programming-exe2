@@ -9,7 +9,6 @@ all: my_graph my_Knapsack libmy_knapsack.a libmy_mat.a
 my_graph: $(OBJECTS_MAIN) libmy_mat.a						#static
 	$(CC) $(FLAGS) -o my_graph $(OBJECTS_MAIN) libmy_mat.a
 
-
 my_Knapsack: $(OBJECTS_Knapsack) libmy_knapsack.a						#static
 	$(CC) $(FLAGS) -o my_Knapsack $(OBJECTS_Knapsack) libmy_knapsack.a
 
@@ -25,7 +24,7 @@ my_graph.o: my_graph.c my_mat.h
 my_mat.o: my_mat.c my_mat.h
 	$(CC) $(FLAGS) -c -fPIC -o my_mat.o my_mat.c
 
-my_Knapsack.o: my_Knapsack.c my_mat.h
+my_Knapsack.o: my_Knapsack.c 
 	$(CC) $(FLAGS) -c -fPIC -o my_Knapsack.o my_Knapsack.c
 
 .PHONY: clean all
