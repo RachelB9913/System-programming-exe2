@@ -2,6 +2,7 @@ OBJECTS_MAT = my_mat.o
 OBJECTS_Knapsack = my_Knapsack.o
 OBJECTS_MAIN = my_graph.o 
 CC = gcc
+AR = ar
 FLAGS = -Wall -g
 
 all: my_graph my_Knapsack libmy_knapsack.a libmy_mat.a
