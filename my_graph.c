@@ -1,5 +1,6 @@
 #include "my_mat.h"
 #include <stdio.h>
+//if doesn't compile - export LD_LIBRARY_PATH=/path/to/directory:$LD_LIBRARY_PATH in the cmd
 
 int main() {
     char func='A'; //just in order to get inside of the loop for the first time

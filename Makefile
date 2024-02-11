@@ -39,19 +39,22 @@ OBJECTS_MAIN = my_graph.o
 CC = gcc
 FLAGS = -Wall -g
 
-all: my_graph my_Knapsack libmy_knapsack.so libmy_mat.so
+all: my_graph my_Knapsack libmy_knapsack.a libmy_mat.a
 
-my_graph: $(OBJECTS_MAIN) libmy_mat.so 
-	$(CC) $(FLAGS) -o my_graph $(OBJECTS_MAIN) -L. -libmy_mat
+my_graph: $(OBJECTS_MAIN) libmy_mat.a						#static
+	$(CC) $(FLAGS) -o my_graph $(OBJECTS_MAIN) libmy_mat.a
 
-my_Knapsack: $(OBJECTS_Knapsack) libmy_knapsack.so 
-	$(CC) $(FLAGS) -o my_Knapsack $(OBJECTS_Knapsack) -L. -libmy_knapsack
+# my_graph: $(OBJECTS_MAIN) libmy_mat.so 
+# 	$(CC) $(FLAGS) -o my_graph $(OBJECTS_MAIN) -L. -libmy_mat
 
-libmy_mat.so: $(OBJECTS_MAT)
-	$(CC) -shared -o libmy_mat.so $(OBJECTS_MAT)
+my_Knapsack: $(OBJECTS_Knapsack) libmy_knapsack.a						#static
+	$(CC) $(FLAGS) -o my_Knapsack $(OBJECTS_Knapsack) libmy_knapsack.a
 
-libmy_knapsack.so: $(OBJECTS_Knapsack)
-	$(CC) -shared -o libmy_knapsack.so $(OBJECTS_Knapsack)
+libmy_mat.a: $(OBJECTS_MAT)
+	$(AR) -rcs libmy_mat.a $(OBJECTS_MAT)
+
+libmy_knapsack.a: $(OBJECTS_Knapsack)
+	$(AR) -rcs libmy_knapsack.a $(OBJECTS_Knapsack)
 
 my_graph.o: my_graph.c my_mat.h 
 	$(CC) $(FLAGS) -c -fPIC -o my_graph.o my_graph.c
@@ -65,4 +68,4 @@ my_Knapsack.o: my_Knapsack.c my_mat.h
 .PHONY: clean all
 
 clean:
-	rm -f *.o *.so my_graph my_Knapsack
+	rm -f *.o *.a my_graph my_Knapsack
